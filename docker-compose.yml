@@ -1,0 +1,18 @@
+version: '3.1'
+
+services:
+  postgres_strapi_blog:
+    container_name: blog_strapi_api
+    hostname: blog_strapi_api
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: senha
+      POSTGRES_DB: blog-strapi
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - type: bind
+        source: D:\Program Files\docker # Origem: diretório no host Windows
+        target: /var/lib/postgresql/data/pgdata:Z  # Destino: diretório no contêiner (mantido para compatibilidade entre sistemas)
+    ports:
+      - 5432:5432
